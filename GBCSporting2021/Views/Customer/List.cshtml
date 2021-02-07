@@ -1,0 +1,40 @@
+﻿@model List<Customer>
+@{
+    ViewData["Title"] = "Customer Manager";
+}
+
+<h3>Customer Manager</h3>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>City</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @if (Model.Any())
+    {
+        foreach (Customer customer in Model)
+        {
+            <tr>
+                <td>
+                    @(customer.FirstName + " " + customer.LastName)
+                </td>
+                <td>@customer.Email</td>
+                <td>@customer.City</td>
+                <td>
+                    <button class="btn btn-primary">Edit</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            No Records Found
+        </tr>
+    }
+</table>
