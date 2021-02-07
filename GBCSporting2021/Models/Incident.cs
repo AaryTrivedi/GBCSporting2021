@@ -17,6 +17,6 @@ namespace GBCSporting2021.Models
         public int TechnicianId { get; set; }
         public Technician Technician { get; set; }
         public DateTime DateOpened { get; set; }
-        public DateTime DateClosed { get; set; }
+        public DateTime? DateClosed { get; set; }
     }
 }
