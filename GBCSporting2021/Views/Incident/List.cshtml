@@ -1,0 +1,40 @@
+﻿@model List<Incident>
+@{
+    ViewData["Title"] = "Incident Manager";
+}
+
+<h3>Incident Manager</h3>
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Customer</th>
+        <th>Product</th>
+        <th>Date Opened</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @if (Model.Any())
+    {
+        foreach (Incident incident in Model)
+        {
+            <tr>
+                <td>@incident.Title</td>
+                <td>@incident.Customer.FirstName</td>
+                <td>@incident.Product.Name</td>
+                <td>@incident.DateOpened</td>
+                <td>
+                    <button class="btn btn-primary">Edit</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            No Records Found
+        </tr>
+    }
+</table>
