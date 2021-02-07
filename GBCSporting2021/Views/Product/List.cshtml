@@ -1,0 +1,46 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "All Products";
+}
+
+<h3>Products</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Release Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+         {
+            foreach(Product product in Model)
+            {
+                <tr>
+                    <td>@product.Code</td>
+                    <td>@product.Name</td>
+                    <td>$@product.Price</td>
+                    <td>@product.ReleaseDate</td>
+                    <td>
+                        <button class="btn btn-primary">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            }
+         }
+         else 
+         {
+            <tr>
+                <td>
+                    No products Found
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
