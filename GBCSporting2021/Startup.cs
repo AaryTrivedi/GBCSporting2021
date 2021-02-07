@@ -62,6 +62,11 @@ namespace GBCSporting2021
                     name: "ListProducts",
                     pattern: "{controller=Product}/{action=List}/"
                 );
+
+                endpoints.MapControllerRoute(
+                    name: "ListTechnicians",
+                    pattern: "{controller=Technician}/{action=List}/"
+                );
             });
         }
     }

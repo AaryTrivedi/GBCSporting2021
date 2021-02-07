@@ -1,0 +1,37 @@
+﻿@model List<Technician>
+@{
+    ViewData["Title"] = "Technician Manager";
+}
+
+<h3>Technician Manager</h3>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th></th>
+        <th></th>
+    </tr>
+        @if(Model.Any())
+        {
+            foreach(Technician technician in Model)
+            {
+                <tr>
+                    <td>@technician.Name</td>
+                    <td>@technician.Email</td>
+                    <td>@technician.Phone</td>
+                    <td>
+                        <button class="btn btn-primary">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            }
+        } else
+        {
+            <tr>
+                No Records Found
+            </tr>
+        }
+</table>
