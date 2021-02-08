@@ -30,13 +30,6 @@ namespace GBCSporting2021.Controllers
             return View("ProductForm");
         }
 
-        [HttpGet]
-        public IActionResult Edit()
-        {
-            ViewBag.Action = "Edit";
-            return View("ProductForm");
-        }
-
         [HttpPost]
         public IActionResult Create(Product product)
         {

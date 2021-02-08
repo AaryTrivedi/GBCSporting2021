@@ -21,5 +21,26 @@ namespace GBCSporting2021.Controllers
             List<Technician> technicians = ctx.Technicians.ToList();
             return View(technicians);
         }
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            ViewBag.Action = "Create";
+            return View("TechnicianForm");
+        }
+
+        [HttpPost]
+        public IActionResult Create(Technician technician)
+        {
+            if (ModelState.IsValid)
+            {
+                ctx.Technicians.Add(technician);
+                ctx.SaveChanges();
+
+                return RedirectToAction("List", "Technician");
+            }
+
+            return View("TechnicianForm", technician);
+        }
     }
 }
