@@ -55,10 +55,15 @@ namespace GBCSporting2021
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "General",
+                    pattern: "{controller}/{action}"
+                );
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                endpoints.MapControllerRoute(
+                /*endpoints.MapControllerRoute(
                     name: "ListProducts",
                     pattern: "{controller=Product}/{action=List}/"
                 );
@@ -106,7 +111,7 @@ namespace GBCSporting2021
                 endpoints.MapControllerRoute(
                     name: "ListIncidents",
                     pattern: "{controller=Incident}/{action=List}"
-                );
+                );*/
             });
         }
     }

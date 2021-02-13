@@ -1,0 +1,64 @@
+﻿@model Incident
+ 
+@{
+    ViewData["Title"] = "Add Incident";
+}
+
+<h3>Add Incident</h3>
+
+<div asp-validation-summary="All"></div>
+
+<form method="post" asp-controller="Incident" asp-action=@ViewBag.Action>
+    <div class="form-group">
+        <label asp-for="CustomerId">Customer</label>
+        <select class="form-control" asp-for="CustomerId">
+            <option>Select Customer</option>
+            @foreach(Customer customer in ViewBag.Customers)
+            {
+                <option value=@customer.CustomerId>
+                    @( customer.FirstName + " " + customer.LastName )
+                </option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductId">Product</label>
+        <select class="form-control" asp-for="ProductId">
+            <option>Select Product</option>
+            @foreach (Product product in ViewBag.Products)
+            {
+                <option value=@product.ProductId>@product.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Title">Title</label>
+        <input class="form-control" asp-for="Title" placeholder="Enter title here" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <textarea class="form-control" asp-for="Description" placeholder="Describe incident here"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="TechnicianId">Technician</label>
+        <select class="form-control" asp-for="TechnicianId">
+            <option>Select Technician</option>
+            @foreach(Technician technician in ViewBag.Technicians)
+            {
+                <option value=@technician.TechnicianId>@technician.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateOpened">Date Opened</label>
+        <input class="form-control" asp-for="DateOpened" type="datetime-local" value=@DateTime.Now.ToString("s") />
+    </div>
+    <div class="form-group">
+        <label asp-for="DateClosed">Date Closed</label>
+        <input class="form-control" asp-for="DateClosed" type="datetime-local" value="" />
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-primary">Cancel</button>
+    </div>
+</form>

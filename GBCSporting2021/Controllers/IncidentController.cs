@@ -25,5 +25,34 @@ namespace GBCSporting2021.Controllers
                                           .ToList();
             return View(incidents);
         }
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            List<Customer> customers = ctx.Customers.ToList();
+            List<Product> products = ctx.Products.ToList();
+            List<Technician> technicians = ctx.Technicians.ToList();
+
+            ViewBag.Customers = customers;
+            ViewBag.Products = products;
+            ViewBag.Technicians = technicians;
+            ViewBag.Action = "Create";
+
+            return View("IncidentForm");
+        }
+
+        [HttpPost]
+        public IActionResult Create(Incident incident)
+        {
+            if (ModelState.IsValid)
+            {
+                ctx.Incidents.Add(incident);
+                ctx.SaveChanges();
+
+                return RedirectToAction("List", "Incident");
+            }
+
+            return View("IncidentForm");
+        }
     }
 }
