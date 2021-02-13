@@ -1,0 +1,53 @@
+﻿@model Customer
+@{
+    ViewData["Title"] = "Add Customer";
+}
+
+<h3>Add Customer</h3>
+
+<div asp-validation-summary="All"></div>
+
+<form method="post" asp-controller="Customer" asp-action=@ViewBag.Action>
+    <div class="form-group">
+        <label asp-for="FirstName">First name</label>
+        <input class="form-control" asp-for="FirstName" placeholder="First Name" />
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName">Last Name</label>
+        <input class="form-control" asp-for="LastName" placeholder="Last Name" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Address">Address</label>
+        <input class="form-control" asp-for="Address" placeholder="Address" />
+    </div>
+    <div class="form-group">
+        <label asp-for="City">City</label>
+        <input class="form-control" asp-for="City" placeholder="City" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CountryId">Country</label>
+        <select class="form-control" asp-for="CountryId">
+            <option value="">Select a country</option>
+            @foreach(Country country in ViewBag.Countries)
+            {
+                <option value="@country.CountryId">@country.CountryName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="PostalCode">Postal Code</label>
+        <input class="form-control" asp-for="PostalCode" placeholder="Postal Code" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Email">Email</label>
+        <input class="form-control" asp-for="Email" placeholder="Email" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Phone">Phone</label>
+        <input class="form-control" asp-for="Phone" placeholder="Phone" />
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-primary">Cancel</button>
+    </div>
+</form>

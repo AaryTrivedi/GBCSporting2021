@@ -94,6 +94,16 @@ namespace GBCSporting2021
                 );
 
                 endpoints.MapControllerRoute(
+                    name: "AddCustomer",
+                    pattern: "{controller=Customer}/{action=Add}/"
+                );
+
+                endpoints.MapControllerRoute(
+                    name: "CreateCustomer",
+                    pattern: "{controller=Customer}/{action=Create}"
+                );
+
+                endpoints.MapControllerRoute(
                     name: "ListIncidents",
                     pattern: "{controller=Incident}/{action=List}"
                 );
