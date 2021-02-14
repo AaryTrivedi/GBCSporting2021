@@ -56,7 +56,7 @@ namespace GBCSporting2021.Controllers
                 return RedirectToAction("List", "Customer");
             }
 
-            return View("CustomerForm");
+            return View("CustomerForm", customer);
         }
 
         [HttpPost]
@@ -69,7 +69,7 @@ namespace GBCSporting2021.Controllers
                 return RedirectToAction("List");
             }
 
-            return View("CustomerForm");
+            return View("CustomerForm", customer);
         }
     }
 }

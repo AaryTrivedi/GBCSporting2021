@@ -41,6 +41,27 @@ namespace GBCSporting2021.Controllers
             return View("IncidentForm");
         }
 
+        [HttpGet]
+        public IActionResult Edit(int identifier)
+        {
+            Incident incident = ctx.Incidents
+                                   .Include(i => i.Customer)
+                                   .Include(i => i.Product)
+                                   .Include(i => i.Technician)
+                                   .FirstOrDefault(i => i.IncidentId == identifier);
+
+            List<Customer> customers = ctx.Customers.ToList();
+            List<Product> products = ctx.Products.ToList();
+            List<Technician> technicians = ctx.Technicians.ToList();
+
+            ViewBag.Customers = customers;
+            ViewBag.Products = products;
+            ViewBag.Technicians = technicians;
+            ViewBag.Action = "Edit";
+
+            return View("IncidentForm", incident);
+        }
+
         [HttpPost]
         public IActionResult Create(Incident incident)
         {
@@ -52,7 +73,21 @@ namespace GBCSporting2021.Controllers
                 return RedirectToAction("List", "Incident");
             }
 
-            return View("IncidentForm");
+            return View("IncidentForm", incident);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Incident incident)
+        {
+            if (ModelState.IsValid)
+            {
+                ctx.Incidents.Update(incident);
+                ctx.SaveChanges();
+
+                return RedirectToAction("List", "Incident");
+            }
+
+            return View("IncidentForm", incident);
         }
     }
 }
