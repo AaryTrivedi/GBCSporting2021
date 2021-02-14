@@ -29,6 +29,16 @@ namespace GBCSporting2021.Controllers
             return View("TechnicianForm");
         }
 
+        [HttpGet]
+        public IActionResult Edit(int identifier)
+        {
+            Technician technician = ctx.Technicians.Find(identifier);
+
+            ViewBag.Action = "Edit";
+
+            return View("TechnicianForm", technician);
+        }
+
         [HttpPost]
         public IActionResult Create(Technician technician)
         {
@@ -37,6 +47,19 @@ namespace GBCSporting2021.Controllers
                 ctx.Technicians.Add(technician);
                 ctx.SaveChanges();
 
+                return RedirectToAction("List", "Technician");
+            }
+
+            return View("TechnicianForm", technician);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Technician technician)
+        {
+            if (ModelState.IsValid)
+            {
+                ctx.Technicians.Update(technician);
+                ctx.SaveChanges();
                 return RedirectToAction("List", "Technician");
             }
 
