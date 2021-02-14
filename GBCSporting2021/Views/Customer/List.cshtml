@@ -3,6 +3,8 @@
     ViewData["Title"] = "Customer Manager";
 }
 
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 <h3>Customer Manager</h3>
 <a class="btn btn-primary" asp-controller="Customer" asp-action="Add">Add Customer</a>
 <table class="table">
@@ -24,7 +26,7 @@
                 <td>@customer.Email</td>
                 <td>@customer.City</td>
                 <td>
-                    <button class="btn btn-primary">Edit</button>
+                    <a asp-action="Edit" asp-controller="Customer" asp-route-identifier="@customer.CustomerId" class="btn btn-primary">Edit</a>
                 </td>
                 <td>
                     <button class="btn btn-danger">Delete</button>
