@@ -30,6 +30,16 @@ namespace GBCSporting2021.Controllers
             return View("ProductForm");
         }
 
+        [HttpGet]
+        public IActionResult Edit(int identifier)
+        {
+            Product product = ctx.Products.Find(identifier);
+
+            ViewBag.Action = "Edit";
+
+            return View("ProductForm", product);
+        }
+
         [HttpPost]
         public IActionResult Create(Product product)
         {
@@ -38,6 +48,19 @@ namespace GBCSporting2021.Controllers
                 ctx.Products.Add(product);
                 ctx.SaveChanges();
 
+                return RedirectToAction("List", "Product");
+            }
+
+            return View("ProductForm", product);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                ctx.Products.Update(product);
+                ctx.SaveChanges();
                 return RedirectToAction("List", "Product");
             }
 

@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "All Products";
 }
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <h3>Products</h3>
 <a asp-controller="Product" asp-action="Add">Add Product</a>
@@ -27,7 +28,7 @@
                     <td>$@product.Price</td>
                     <td>@product.ReleaseDate</td>
                     <td>
-                        <button class="btn btn-primary">Edit</button>
+                        <a asp-action="Edit" asp-controller="Product" asp-route-identifier="@product.ProductId" class="btn btn-primary">Edit</a>
                     </td>
                     <td>
                         <button class="btn btn-danger">Delete</button>
