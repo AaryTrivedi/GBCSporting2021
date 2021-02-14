@@ -32,6 +32,7 @@ namespace GBCSporting2021.Controllers
             return View("CustomerForm");
         }
 
+        [HttpGet]
         public IActionResult Edit(int identifier)
         {
             Customer customer = ctx.Customers
@@ -43,6 +44,14 @@ namespace GBCSporting2021.Controllers
             ViewBag.Countries = countries;
 
             return View("CustomerForm", customer);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int identifier)
+        {
+            Customer customer = ctx.Customers.Find(identifier);
+
+            return View(customer);
         }
 
         [HttpPost]
@@ -70,6 +79,14 @@ namespace GBCSporting2021.Controllers
             }
 
             return View("CustomerForm", customer);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Customer customer)
+        {
+            ctx.Customers.Remove(customer);
+            ctx.SaveChanges();
+            return RedirectToAction("List", "Customer");
         }
     }
 }
