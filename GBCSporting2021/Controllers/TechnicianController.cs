@@ -39,6 +39,14 @@ namespace GBCSporting2021.Controllers
             return View("TechnicianForm", technician);
         }
 
+        [HttpGet]
+        public IActionResult Delete(int identifier)
+        {
+            Technician technician = ctx.Technicians.Find(identifier);
+
+            return View(technician);
+        }
+
         [HttpPost]
         public IActionResult Create(Technician technician)
         {
@@ -64,6 +72,14 @@ namespace GBCSporting2021.Controllers
             }
 
             return View("TechnicianForm", technician);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Technician technician)
+        {
+            ctx.Technicians.Remove(technician);
+            ctx.SaveChanges();
+            return RedirectToAction("List");
         }
     }
 }
