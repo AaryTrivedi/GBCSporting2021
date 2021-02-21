@@ -40,6 +40,13 @@ namespace GBCSporting2021.Controllers
             return View("ProductForm", product);
         }
 
+        [HttpGet]
+        public IActionResult Delete(int identifier)
+        {
+            Product product = ctx.Products.Find(identifier);
+            return View(product);
+        }
+
         [HttpPost]
         public IActionResult Create(Product product)
         {
@@ -65,6 +72,14 @@ namespace GBCSporting2021.Controllers
             }
 
             return View("ProductForm", product);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Product product)
+        {
+            ctx.Products.Remove(product);
+            ctx.SaveChanges();
+            return RedirectToAction("List");
         }
     }
 }
