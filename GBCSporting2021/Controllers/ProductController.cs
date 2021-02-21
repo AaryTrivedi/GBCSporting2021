@@ -27,7 +27,7 @@ namespace GBCSporting2021.Controllers
         public IActionResult Add()
         {
             ViewBag.Action = "Create";
-            return View("ProductForm");
+            return View("ProductForm", new Product());
         }
 
         [HttpGet]

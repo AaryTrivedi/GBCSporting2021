@@ -28,7 +28,7 @@
                     <a asp-action="Edit" asp-controller="Incident" asp-route-identifier="@incident.IncidentId" class="btn btn-primary">Edit</a>
                 </td>
                 <td>
-                    <button class="btn btn-danger">Delete</button>
+                    <a asp-action="Delete" asp-controller="Incident" asp-route-identifier="@incident.IncidentId" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         }

@@ -29,7 +29,7 @@ namespace GBCSporting2021.Controllers
             List<Country> countries = ctx.Countries.ToList();
             ViewBag.Action = "Create";
             ViewBag.Countries = countries;
-            return View("CustomerForm");
+            return View("CustomerForm", new Customer());
         }
 
         [HttpGet]
@@ -65,6 +65,10 @@ namespace GBCSporting2021.Controllers
                 return RedirectToAction("List", "Customer");
             }
 
+            List<Country> countries = ctx.Countries.ToList();
+            ViewBag.Action = "Create";
+            ViewBag.Countries = countries;
+
             return View("CustomerForm", customer);
         }
 
@@ -77,6 +81,10 @@ namespace GBCSporting2021.Controllers
                 ctx.SaveChanges();
                 return RedirectToAction("List");
             }
+
+            List<Country> countries = ctx.Countries.ToList();
+            ViewBag.Action = "Create";
+            ViewBag.Countries = countries;
 
             return View("CustomerForm", customer);
         }

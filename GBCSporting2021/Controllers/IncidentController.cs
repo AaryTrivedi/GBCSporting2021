@@ -38,7 +38,7 @@ namespace GBCSporting2021.Controllers
             ViewBag.Technicians = technicians;
             ViewBag.Action = "Create";
 
-            return View("IncidentForm");
+            return View("IncidentForm", new Incident());
         }
 
         [HttpGet]
@@ -62,6 +62,13 @@ namespace GBCSporting2021.Controllers
             return View("IncidentForm", incident);
         }
 
+        [HttpGet]
+        public IActionResult Delete(int identifier)
+        {
+            Incident incident = ctx.Incidents.Find(identifier);
+            return View(incident);
+        }
+
         [HttpPost]
         public IActionResult Create(Incident incident)
         {
@@ -72,6 +79,15 @@ namespace GBCSporting2021.Controllers
 
                 return RedirectToAction("List", "Incident");
             }
+
+            List<Customer> customers = ctx.Customers.ToList();
+            List<Product> products = ctx.Products.ToList();
+            List<Technician> technicians = ctx.Technicians.ToList();
+
+            ViewBag.Customers = customers;
+            ViewBag.Products = products;
+            ViewBag.Technicians = technicians;
+            ViewBag.Action = "Create";
 
             return View("IncidentForm", incident);
         }
@@ -87,7 +103,24 @@ namespace GBCSporting2021.Controllers
                 return RedirectToAction("List", "Incident");
             }
 
+            List<Customer> customers = ctx.Customers.ToList();
+            List<Product> products = ctx.Products.ToList();
+            List<Technician> technicians = ctx.Technicians.ToList();
+
+            ViewBag.Customers = customers;
+            ViewBag.Products = products;
+            ViewBag.Technicians = technicians;
+            ViewBag.Action = "Create";
+
             return View("IncidentForm", incident);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Incident incident)
+        {
+            ctx.Incidents.Remove(incident);
+            ctx.SaveChanges();
+            return RedirectToAction("List", "Incident");
         }
     }
 }
