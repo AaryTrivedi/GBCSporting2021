@@ -5,22 +5,22 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <h3>Products</h3>
-<a asp-controller="Product" asp-action="Add">Add Product</a>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Code</th>
-            <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Release Date</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model.Any())
-         {
-            foreach(Product product in Model)
+<a class="btn btn-primary" asp-controller="Product" asp-action="Add">Add Product</a>
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Release Date</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Product product in Model)
             {
                 <tr>
                     <td>@product.Code</td>
@@ -35,14 +35,11 @@
                     </td>
                 </tr>
             }
-         }
-         else 
-         {
-            <tr>
-                <td>
-                    No products Found
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+}
+else
+{
+    <hr />
+    <h3>No Products Found</h3>
+}

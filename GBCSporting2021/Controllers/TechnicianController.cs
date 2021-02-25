@@ -58,6 +58,7 @@ namespace GBCSporting2021.Controllers
                 return RedirectToAction("List", "Technician");
             }
 
+            ViewBag.Action = "Create";
             return View("TechnicianForm", technician);
         }
 
@@ -71,6 +72,7 @@ namespace GBCSporting2021.Controllers
                 return RedirectToAction("List", "Technician");
             }
 
+            ViewBag.Action = "Edit";
             return View("TechnicianForm", technician);
         }
 

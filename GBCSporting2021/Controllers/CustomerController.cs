@@ -83,7 +83,7 @@ namespace GBCSporting2021.Controllers
             }
 
             List<Country> countries = ctx.Countries.ToList();
-            ViewBag.Action = "Create";
+            ViewBag.Action = "Edit";
             ViewBag.Countries = countries;
 
             return View("CustomerForm", customer);

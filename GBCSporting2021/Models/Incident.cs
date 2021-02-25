@@ -9,13 +9,13 @@ namespace GBCSporting2021.Models
     public class Incident
     {
         public int IncidentId { get; set; }
-        
-        [Required(ErrorMessage = "Customer is required")]
+
+        [Range(1, int.MaxValue, ErrorMessage = "Please select customer")]
         public int CustomerId { get; set; }
 
         public Customer Customer { get; set; }
 
-        [Required(ErrorMessage = "Product is required")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please select product")]
         public int ProductId { get; set; }
         public Product Product { get; set; }
 
@@ -24,9 +24,8 @@ namespace GBCSporting2021.Models
 
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
-
-        [Required(ErrorMessage = "Technician is required")]
-        public int TechnicianId { get; set; }
+        
+        public int? TechnicianId { get; set; }
         public Technician Technician { get; set; }
         public DateTime DateOpened { get; set; }
         public DateTime? DateClosed { get; set; }

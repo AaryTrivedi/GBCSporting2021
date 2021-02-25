@@ -58,6 +58,8 @@ namespace GBCSporting2021.Controllers
                 return RedirectToAction("List", "Product");
             }
 
+            ViewBag.Action = "Create";
+
             return View("ProductForm", product);
         }
 
@@ -71,6 +73,7 @@ namespace GBCSporting2021.Controllers
                 return RedirectToAction("List", "Product");
             }
 
+            ViewBag.Action = "Edit";
             return View("ProductForm", product);
         }
 

@@ -70,56 +70,6 @@ namespace GBCSporting2021
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                 );
-
-                /*endpoints.MapControllerRoute(
-                    name: "ListProducts",
-                    pattern: "{controller=Product}/{action=List}/"
-                );
-
-                endpoints.MapControllerRoute(
-                    name: "AddProduct",
-                    pattern: "{controller=Product}/{action=Add}/"
-                );
-
-                endpoints.MapControllerRoute(
-                    name: "CreateProduct",
-                    pattern: "{controller=Product}/{action=Create}"
-                );
-
-                endpoints.MapControllerRoute(
-                    name: "ListTechnicians",
-                    pattern: "{controller=Technician}/{action=List}/"
-                );
-
-                endpoints.MapControllerRoute(
-                    name: "AddTechnician",
-                    pattern: "{controller=Technician}/{action=Add}/"
-                );
-
-                endpoints.MapControllerRoute(
-                    name: "CreateTechnician",
-                    pattern: "{controller=Technician}/{action=Create}"
-                );
-
-                endpoints.MapControllerRoute(
-                    name: "ListCustomers",
-                    pattern: "{controller=Customer}/{action=List}/"
-                );
-
-                endpoints.MapControllerRoute(
-                    name: "AddCustomer",
-                    pattern: "{controller=Customer}/{action=Add}/"
-                );
-
-                endpoints.MapControllerRoute(
-                    name: "CreateCustomer",
-                    pattern: "{controller=Customer}/{action=Create}"
-                );
-
-                endpoints.MapControllerRoute(
-                    name: "ListIncidents",
-                    pattern: "{controller=Incident}/{action=List}"
-                );*/
             });
         }
     }

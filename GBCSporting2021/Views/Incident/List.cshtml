@@ -6,18 +6,18 @@
 
 <h3>Incident Manager</h3>
 <a class="btn btn-primary" asp-action="Add" asp-controller="Incident">Add Incident</a>
-<table class="table">
-    <tr>
-        <th>Title</th>
-        <th>Customer</th>
-        <th>Product</th>
-        <th>Date Opened</th>
-        <th></th>
-        <th></th>
-    </tr>
-    @if (Model.Any())
-    {
-        foreach (Incident incident in Model)
+@if (Model.Any())
+{
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Date Opened</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (Incident incident in Model)
         {
             <tr>
                 <td>@incident.Title</td>
@@ -32,11 +32,10 @@
                 </td>
             </tr>
         }
-    }
-    else
-    {
-        <tr>
-            No Records Found
-        </tr>
-    }
-</table>
+    </table>
+}
+else
+{
+    <hr />
+    <h3>No Incidents Found</h3>
+}
