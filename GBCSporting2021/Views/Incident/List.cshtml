@@ -4,31 +4,64 @@
 }
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-<h3>Incident Manager</h3>
-<a class="btn btn-primary" asp-action="Add" asp-controller="Incident">Add Incident</a>
+<div class="flex justify-content-between align-items-center">
+    <h3 class="page-heading">Incident Manager</h3>
+    <a class="btn-sm btn-primary" asp-action="Add" asp-controller="Incident">Add Incident</a>
+</div>
+
 @if (Model.Any())
 {
     <table class="table">
         <tr>
-            <th>Title</th>
+            <th>
+                <i class="circle"></i>
+                &nbsp;
+                Title
+            </th>
             <th>Customer</th>
             <th>Product</th>
             <th>Date Opened</th>
-            <th></th>
             <th></th>
         </tr>
         @foreach (Incident incident in Model)
         {
             <tr>
-                <td>@incident.Title</td>
-                <td>@incident.Customer.FirstName</td>
-                <td>@incident.Product.Name</td>
-                <td>@incident.DateOpened</td>
                 <td>
-                    <a asp-action="Edit" asp-controller="Incident" asp-route-identifier="@incident.IncidentId" class="btn btn-primary">Edit</a>
+                    @{
+                        if (incident.DateClosed == null)
+                        {
+                            <i class="orange circle" title="Open"></i>
+                        }
+                        else
+                        {
+                            <i class="green circle" title="Closed"></i>
+                        }
+                    }
+                    &nbsp;
+                    <a asp-action="Edit" asp-controller="Incident" asp-route-identifier="@incident.IncidentId">
+                        @incident.Title
+                    </a>
                 </td>
                 <td>
-                    <a asp-action="Delete" asp-controller="Incident" asp-route-identifier="@incident.IncidentId" class="btn btn-danger">Delete</a>
+                    <a asp-action="Edit" asp-controller="Customer" asp-route-identifier="@incident.Customer.CustomerId">
+                        @(incident.Customer.FirstName + " " + incident.Customer.LastName)
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Product" asp-route-identifier="@incident.Product.ProductId">
+                        @incident.Product.Name
+                    </a>
+                </td>
+                <td>@incident.DateOpened</td>
+                <td class="float-right">
+                    <div class="dropdown float-right">
+                        <button class="dropdown-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a asp-action="Edit" asp-controller="Incident" asp-route-identifier="@incident.IncidentId" class="dropdown-item">Edit</a>
+                            <div class="dropdown-divider"></div>
+                            <a asp-action="Delete" asp-controller="Incident" asp-route-identifier="@incident.IncidentId" class="dropdown-item">Delete</a>
+                        </div>
+                    </div>
                 </td>
             </tr>
         }

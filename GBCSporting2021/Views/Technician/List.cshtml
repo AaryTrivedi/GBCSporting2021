@@ -4,8 +4,10 @@
 }
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-<h3>Technician Manager</h3>
-<a class="btn btn-primary" asp-controller="Technician" asp-action="Add">Add Technician</a>
+<div class="flex justify-content-between align-items-center">
+    <h3 class="page-heading">Technician Manager</h3>
+    <a class="btn-sm btn-primary" asp-controller="Technician" asp-action="Add">Add Technician</a>
+</div>
 
 @if (Model.Any())
 {
@@ -15,19 +17,26 @@
             <th>Email</th>
             <th>Phone</th>
             <th></th>
-            <th></th>
         </tr>
         @foreach (Technician technician in Model)
         {
             <tr>
-                <td>@technician.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Technician" asp-route-identifier="@technician.TechnicianId">
+                        @technician.Name
+                    </a>
+                </td>
                 <td>@technician.Email</td>
                 <td>@technician.Phone</td>
-                <td>
-                    <a asp-action="Edit" asp-controller="Technician" asp-route-identifier="@technician.TechnicianId" class="btn btn-primary">Edit</a>
-                </td>
-                <td>
-                    <a asp-action="Delete" asp-controller="Technician" asp-route-identifier="@technician.TechnicianId" class="btn btn-danger">Delete</a>
+                <td class="float-right">
+                    <div class="dropdown float-right">
+                        <button class="dropdown-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a asp-action="Edit" asp-controller="Technician" asp-route-identifier="@technician.TechnicianId" class="dropdown-item">Edit</a>
+                            <div class="dropdown-divider"></div>
+                            <a asp-action="Delete" asp-controller="Technician" asp-route-identifier="@technician.TechnicianId" class="dropdown-item">Delete</a>
+                        </div>
+                    </div>
                 </td>
             </tr>
         }
