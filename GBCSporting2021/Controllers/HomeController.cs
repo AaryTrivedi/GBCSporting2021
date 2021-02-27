@@ -5,22 +5,31 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace GBCSporting2021.Controllers
 {
     public class HomeController : Controller
     {
+        private Context ctx;
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, Context ctx)
         {
+            this.ctx = ctx;
             _logger = logger;
-        }
+        }      
 
         public IActionResult Index()
         {
-            return View();
+            List<Incident> incidents = ctx.Incidents
+                                          .Include(i => i.Customer)
+                                          .Include(i => i.Product)
+                                          .OrderByDescending(i => i.DateOpened)
+                                          .Take(5)
+                                          .ToList();
+
+            return View(incidents);
         }
 
         public IActionResult Privacy()

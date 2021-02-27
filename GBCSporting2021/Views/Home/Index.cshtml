@@ -1,8 +1,50 @@
-﻿@{
+﻿@model List<Incident>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="jumbotron">
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>
+           Welcome to the sporting website.
+           <br />
+           Here are the recent incidents reported.
+        </p>
+    </div>
 </div>
+
+<div class="flex justify-content-between align-items-center">
+    <h3 class="page-heading">Recent Incident</h3>
+</div>
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Customer</th>
+        <th>Product</th>
+        <th>Date Opened</th>
+    </tr>
+        @foreach (Incident incident in Model)
+         {
+            <tr>
+                <td>
+
+                    <a asp-action="Edit" asp-controller="Incident" asp-route-identifier="@incident.IncidentId">
+                        @incident.Title
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Customer" asp-route-identifier="@incident.Customer.CustomerId">
+                        @(incident.Customer.FirstName + " " + incident.Customer.LastName)
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Product" asp-route-identifier="@incident.Product.ProductId">
+                        @incident.Product.Name
+                    </a>
+                </td>
+                <td>@incident.DateOpened</td>
+            </tr>
+         }
+    </table>
