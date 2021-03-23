@@ -16,6 +16,7 @@ namespace GBCSporting2021.Controllers
             this.ctx = ctx;
         }
 
+        [Route("/technicians")]
         public IActionResult List()
         {
             List<Technician> technicians = ctx.Technicians.ToList();

@@ -16,6 +16,7 @@ namespace GBCSporting2021.Controllers
             this.ctx = ctx;
         }
 
+        [Route("/products")]
         [HttpGet]
         public IActionResult List()
         {

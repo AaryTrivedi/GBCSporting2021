@@ -32,6 +32,11 @@ namespace GBCSporting2021.Controllers
             return View(incidents);
         }
 
+        [Route("/about")]
+        public IActionResult About()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

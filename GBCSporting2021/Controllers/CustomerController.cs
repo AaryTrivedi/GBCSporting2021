@@ -17,6 +17,7 @@ namespace GBCSporting2021.Controllers
             this.ctx = ctx;
         }
 
+        [Route("/customers")]
         public IActionResult List()
         {
             List<Customer> customers = ctx.Customers.ToList();

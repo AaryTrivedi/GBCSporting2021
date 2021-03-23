@@ -142,3 +142,8 @@ body {
     display: inline-block;
     font-size: 17px;
 }
+
+.active.nav-link {
+    color: #0366d6 !important;
+    font-weight: 500;
+}

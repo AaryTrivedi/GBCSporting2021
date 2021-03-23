@@ -17,6 +17,7 @@ namespace GBCSporting2021.Controllers
             this.ctx = ctx;
         }
 
+        [Route("/incidents")]
         public IActionResult List()
         {
             List<Incident> incidents = ctx.Incidents
