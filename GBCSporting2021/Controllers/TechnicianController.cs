@@ -56,6 +56,9 @@ namespace GBCSporting2021.Controllers
                 ctx.Technicians.Add(technician);
                 ctx.SaveChanges();
 
+                TempData["message"] = "Technician with id: " + technician.TechnicianId + " created successfully";
+                TempData["indicator"] = "success";
+
                 return RedirectToAction("List", "Technician");
             }
 
@@ -70,6 +73,10 @@ namespace GBCSporting2021.Controllers
             {
                 ctx.Technicians.Update(technician);
                 ctx.SaveChanges();
+
+                TempData["message"] = "Technician with id: " + technician.TechnicianId + " updated successfully";
+                TempData["indicator"] = "success";
+
                 return RedirectToAction("List", "Technician");
             }
 
@@ -82,6 +89,10 @@ namespace GBCSporting2021.Controllers
         {
             ctx.Technicians.Remove(technician);
             ctx.SaveChanges();
+
+            TempData["message"] = "Technician with id: " + technician.TechnicianId + " deleted successfully";
+            TempData["indicator"] = "danger";
+
             return RedirectToAction("List");
         }
     }

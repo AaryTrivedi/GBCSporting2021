@@ -78,6 +78,9 @@ namespace GBCSporting2021.Controllers
                 ctx.Incidents.Add(incident);
                 ctx.SaveChanges();
 
+                TempData["message"] = "Incident with id: " + incident.IncidentId + " created successfully";
+                TempData["indicator"] = "success";
+
                 return RedirectToAction("List", "Incident");
             }
 
@@ -101,6 +104,9 @@ namespace GBCSporting2021.Controllers
                 ctx.Incidents.Update(incident);
                 ctx.SaveChanges();
 
+                TempData["message"] = "Incident with id: " + incident.IncidentId + " updated successfully";
+                TempData["indicator"] = "success";
+
                 return RedirectToAction("List", "Incident");
             }
 
@@ -121,6 +127,10 @@ namespace GBCSporting2021.Controllers
         {
             ctx.Incidents.Remove(incident);
             ctx.SaveChanges();
+
+            TempData["message"] = "Incident with id: " + incident.IncidentId + " deleted successfully";
+            TempData["indicator"] = "danger";
+
             return RedirectToAction("List", "Incident");
         }
     }

@@ -63,6 +63,9 @@ namespace GBCSporting2021.Controllers
                 ctx.Customers.Add(customer);
                 ctx.SaveChanges();
 
+                TempData["message"] = "Customer with id: " + customer.CustomerId + " created successfully";
+                TempData["indicator"] = "success";
+
                 return RedirectToAction("List", "Customer");
             }
 
@@ -80,6 +83,8 @@ namespace GBCSporting2021.Controllers
             {
                 ctx.Customers.Update(customer);
                 ctx.SaveChanges();
+                TempData["message"] = "Customer with id: " + customer.CustomerId + " updated successfully";
+                TempData["indicator"] = "success";
                 return RedirectToAction("List");
             }
 
@@ -95,6 +100,8 @@ namespace GBCSporting2021.Controllers
         {
             ctx.Customers.Remove(customer);
             ctx.SaveChanges();
+            TempData["message"] = "Customer with id: " + customer.CustomerId + " deleted successfully";
+            TempData["indicator"] = "danger";
             return RedirectToAction("List", "Customer");
         }
     }

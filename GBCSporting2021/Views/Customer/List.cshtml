@@ -7,9 +7,13 @@
 
 <div class="flex justify-content-between align-items-center">
     <h3 class="page-heading">Customer Manager</h3>
+    @if (TempData.Keys.Contains("message"))
+    {
+        <a href="#" class="badge badge-@(TempData["indicator"])">@TempData["message"]</a>
+    }
     <a class="btn-sm btn-primary" asp-controller="Customer" asp-action="Add">Add Customer</a>
 </div>
-@if (Model.Any())
+@if (Model.Any()) 
 {
     <table class="table">
         <tr>

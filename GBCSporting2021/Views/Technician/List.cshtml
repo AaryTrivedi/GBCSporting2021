@@ -6,6 +6,10 @@
 
 <div class="flex justify-content-between align-items-center">
     <h3 class="page-heading">Technician Manager</h3>
+    @if (TempData.Keys.Contains("message"))
+    {
+        <a href="#" class="badge badge-@(TempData["indicator"])">@TempData["message"]</a>
+    }
     <a class="btn-sm btn-primary" asp-controller="Technician" asp-action="Add">Add Technician</a>
 </div>
 

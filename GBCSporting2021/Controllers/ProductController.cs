@@ -56,6 +56,9 @@ namespace GBCSporting2021.Controllers
                 ctx.Products.Add(product);
                 ctx.SaveChanges();
 
+                TempData["message"] = "Product with id: " + product.ProductId + " created successfully";
+                TempData["indicator"] = "success";
+
                 return RedirectToAction("List", "Product");
             }
 
@@ -71,6 +74,10 @@ namespace GBCSporting2021.Controllers
             {
                 ctx.Products.Update(product);
                 ctx.SaveChanges();
+
+                TempData["message"] = "Product with id: " + product.ProductId + " updated successfully";
+                TempData["indicator"] = "success";
+
                 return RedirectToAction("List", "Product");
             }
 
@@ -83,6 +90,10 @@ namespace GBCSporting2021.Controllers
         {
             ctx.Products.Remove(product);
             ctx.SaveChanges();
+
+            TempData["message"] = "Product with id: " + product.ProductId + " deleted successfully";
+            TempData["indicator"] = "danger";
+
             return RedirectToAction("List");
         }
     }
