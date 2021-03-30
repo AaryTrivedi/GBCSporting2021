@@ -18,6 +18,8 @@ namespace GBCSporting2021.Models
         public DbSet<Incident> Incidents { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Technician> Technicians { get; set; }
+
+        public DbSet<Registration> Registrations { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Country>().HasData(
@@ -189,6 +191,38 @@ namespace GBCSporting2021.Models
                     TechnicianId = 3,
                     DateOpened = DateTime.Now,
                     DateClosed = null
+                }
+            );
+
+            modelBuilder.Entity<Registration>().HasData(
+                new Registration { 
+                    RegistrationId = 1,
+                    CustomerId = 1,
+                    ProductId = 1
+                },
+                new Registration
+                {
+                    RegistrationId = 2,
+                    CustomerId = 2,
+                    ProductId = 3
+                },
+                new Registration
+                {
+                    RegistrationId = 3,
+                    CustomerId = 2,
+                    ProductId = 1
+                },
+                new Registration
+                {
+                    RegistrationId = 4,
+                    CustomerId = 1,
+                    ProductId = 1
+                },
+                new Registration
+                {
+                    RegistrationId = 5,
+                    CustomerId = 2,
+                    ProductId = 2
                 }
             );
         }

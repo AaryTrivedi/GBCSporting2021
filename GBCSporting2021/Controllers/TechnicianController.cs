@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GBCSporting2021.Models;
+using Microsoft.EntityFrameworkCore;
+using GBCSporting2021.ViewModels;
 
 namespace GBCSporting2021.Controllers
 {
@@ -46,6 +48,25 @@ namespace GBCSporting2021.Controllers
             Technician technician = ctx.Technicians.Find(identifier);
 
             return View(technician);
+        }
+
+        [HttpGet]
+        [Route("/technician/{identifier}/incidents")]
+        public IActionResult Incidents(int identifier)
+        {
+            Technician technician = ctx.Technicians.Find(identifier);
+            List<Incident> techIncidents = ctx.Incidents
+                                              .Include(i => i.Customer)
+                                              .Include(i => i.Product)
+                                              .Where(Incident => Incident.TechnicianId == identifier)
+                                              .ToList();
+
+            TechIncidentListViewModel tilvm = new TechIncidentListViewModel();
+
+            tilvm.Technician = technician;
+            tilvm.Incidents = techIncidents;
+
+            return View(tilvm);
         }
 
         [HttpPost]

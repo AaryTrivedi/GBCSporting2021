@@ -4,14 +4,16 @@ using GBCSporting2021.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GBCSporting2021.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20210330013750_RegistrationDataAdded")]
+    partial class RegistrationDataAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,7 +196,7 @@ namespace GBCSporting2021.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateOpened = new DateTime(2021, 3, 29, 21, 44, 18, 534, DateTimeKind.Local).AddTicks(9305),
+                            DateOpened = new DateTime(2021, 3, 29, 21, 37, 50, 155, DateTimeKind.Local).AddTicks(9257),
                             Description = "Could not install",
                             ProductId = 1,
                             TechnicianId = 1,
@@ -204,7 +206,7 @@ namespace GBCSporting2021.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateOpened = new DateTime(2021, 3, 29, 21, 44, 18, 535, DateTimeKind.Local).AddTicks(286),
+                            DateOpened = new DateTime(2021, 3, 29, 21, 37, 50, 156, DateTimeKind.Local).AddTicks(34),
                             Description = "Error importing data",
                             ProductId = 2,
                             TechnicianId = 3,
@@ -244,7 +246,7 @@ namespace GBCSporting2021.Migrations
                             Code = "TRNY10",
                             Name = "Tournament Master 1.0",
                             Price = 4.9900000000000002,
-                            ReleaseDate = new DateTime(2021, 3, 29, 21, 44, 18, 531, DateTimeKind.Local).AddTicks(8546)
+                            ReleaseDate = new DateTime(2021, 3, 29, 21, 37, 50, 153, DateTimeKind.Local).AddTicks(2008)
                         },
                         new
                         {
@@ -252,7 +254,7 @@ namespace GBCSporting2021.Migrations
                             Code = "LEAG10",
                             Name = "League Scheduler 1.0",
                             Price = 4.9900000000000002,
-                            ReleaseDate = new DateTime(2021, 3, 29, 21, 44, 18, 534, DateTimeKind.Local).AddTicks(5874)
+                            ReleaseDate = new DateTime(2021, 3, 29, 21, 37, 50, 155, DateTimeKind.Local).AddTicks(6575)
                         },
                         new
                         {
@@ -260,7 +262,7 @@ namespace GBCSporting2021.Migrations
                             Code = "LEGD10",
                             Name = "League Scheduler Deluxe 1.0",
                             Price = 7.9900000000000002,
-                            ReleaseDate = new DateTime(2021, 3, 29, 21, 44, 18, 534, DateTimeKind.Local).AddTicks(5913)
+                            ReleaseDate = new DateTime(2021, 3, 29, 21, 37, 50, 155, DateTimeKind.Local).AddTicks(6609)
                         },
                         new
                         {
@@ -268,7 +270,7 @@ namespace GBCSporting2021.Migrations
                             Code = "DRAFT10",
                             Name = "Draft Manager1.0",
                             Price = 4.9900000000000002,
-                            ReleaseDate = new DateTime(2021, 3, 29, 21, 44, 18, 534, DateTimeKind.Local).AddTicks(5919)
+                            ReleaseDate = new DateTime(2021, 3, 29, 21, 37, 50, 155, DateTimeKind.Local).AddTicks(6614)
                         });
                 });
 
@@ -291,7 +293,7 @@ namespace GBCSporting2021.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Registrations");
+                    b.ToTable("Registration");
 
                     b.HasData(
                         new

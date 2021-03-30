@@ -1,4 +1,4 @@
-﻿@model List<Incident>
+﻿@model GBCSporting2021.ViewModels.IncidentListViewModel
 @{
     ViewData["Title"] = "Incident Manager";
 }
@@ -13,7 +13,25 @@
     <a class="btn-sm btn-primary" asp-action="Add" asp-controller="Incident">Add Incident</a>
 </div>
 
-@if (Model.Any())
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link@(Model.FilterType.CompareTo("all") == 0 ? " active" : "")" asp-action="List" asp-route-filter="">
+            All
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link@(Model.FilterType.CompareTo("unassigned") == 0 ? " active" : "")" asp-action="List" asp-route-filter="unassigned">
+            Unassigned
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link@(Model.FilterType.CompareTo("open") == 0 ? " active" : "")" asp-action="List" asp-route-filter="open">
+            Open
+        </a>
+    </li>
+</ul>
+
+@if (Model.Incidents.Any())
 {
     <table class="table">
         <tr>
@@ -27,7 +45,7 @@
             <th>Date Opened</th>
             <th></th>
         </tr>
-        @foreach (Incident incident in Model)
+        @foreach (Incident incident in Model.Incidents)
         {
             <tr>
                 <td>

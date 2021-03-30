@@ -34,7 +34,7 @@
                             <a class="@(ViewContext.RouteData.Values["Controller"].Equals("Incident") ? "active " : "" )nav-link text-dark" asp-area="" asp-controller="Incident" asp-action="List">Incidents</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Registrations</a>
+                            <a class="@(ViewContext.RouteData.Values["Controller"].Equals("Incident") ? "active " : "" )nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="List">Registrations</a>
                         </li>
                     </ul>
                 </div>

@@ -4,14 +4,16 @@ using GBCSporting2021.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GBCSporting2021.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20210330013536_Registration")]
+    partial class Registration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,7 +196,7 @@ namespace GBCSporting2021.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateOpened = new DateTime(2021, 3, 29, 21, 44, 18, 534, DateTimeKind.Local).AddTicks(9305),
+                            DateOpened = new DateTime(2021, 3, 29, 21, 35, 36, 40, DateTimeKind.Local).AddTicks(7606),
                             Description = "Could not install",
                             ProductId = 1,
                             TechnicianId = 1,
@@ -204,7 +206,7 @@ namespace GBCSporting2021.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateOpened = new DateTime(2021, 3, 29, 21, 44, 18, 535, DateTimeKind.Local).AddTicks(286),
+                            DateOpened = new DateTime(2021, 3, 29, 21, 35, 36, 40, DateTimeKind.Local).AddTicks(8614),
                             Description = "Error importing data",
                             ProductId = 2,
                             TechnicianId = 3,
@@ -244,7 +246,7 @@ namespace GBCSporting2021.Migrations
                             Code = "TRNY10",
                             Name = "Tournament Master 1.0",
                             Price = 4.9900000000000002,
-                            ReleaseDate = new DateTime(2021, 3, 29, 21, 44, 18, 531, DateTimeKind.Local).AddTicks(8546)
+                            ReleaseDate = new DateTime(2021, 3, 29, 21, 35, 36, 37, DateTimeKind.Local).AddTicks(6303)
                         },
                         new
                         {
@@ -252,7 +254,7 @@ namespace GBCSporting2021.Migrations
                             Code = "LEAG10",
                             Name = "League Scheduler 1.0",
                             Price = 4.9900000000000002,
-                            ReleaseDate = new DateTime(2021, 3, 29, 21, 44, 18, 534, DateTimeKind.Local).AddTicks(5874)
+                            ReleaseDate = new DateTime(2021, 3, 29, 21, 35, 36, 40, DateTimeKind.Local).AddTicks(4059)
                         },
                         new
                         {
@@ -260,7 +262,7 @@ namespace GBCSporting2021.Migrations
                             Code = "LEGD10",
                             Name = "League Scheduler Deluxe 1.0",
                             Price = 7.9900000000000002,
-                            ReleaseDate = new DateTime(2021, 3, 29, 21, 44, 18, 534, DateTimeKind.Local).AddTicks(5913)
+                            ReleaseDate = new DateTime(2021, 3, 29, 21, 35, 36, 40, DateTimeKind.Local).AddTicks(4099)
                         },
                         new
                         {
@@ -268,61 +270,7 @@ namespace GBCSporting2021.Migrations
                             Code = "DRAFT10",
                             Name = "Draft Manager1.0",
                             Price = 4.9900000000000002,
-                            ReleaseDate = new DateTime(2021, 3, 29, 21, 44, 18, 534, DateTimeKind.Local).AddTicks(5919)
-                        });
-                });
-
-            modelBuilder.Entity("GBCSporting2021.Models.Registration", b =>
-                {
-                    b.Property<int>("RegistrationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("RegistrationId");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Registrations");
-
-                    b.HasData(
-                        new
-                        {
-                            RegistrationId = 1,
-                            CustomerId = 1,
-                            ProductId = 1
-                        },
-                        new
-                        {
-                            RegistrationId = 2,
-                            CustomerId = 2,
-                            ProductId = 3
-                        },
-                        new
-                        {
-                            RegistrationId = 3,
-                            CustomerId = 2,
-                            ProductId = 1
-                        },
-                        new
-                        {
-                            RegistrationId = 4,
-                            CustomerId = 1,
-                            ProductId = 1
-                        },
-                        new
-                        {
-                            RegistrationId = 5,
-                            CustomerId = 2,
-                            ProductId = 2
+                            ReleaseDate = new DateTime(2021, 3, 29, 21, 35, 36, 40, DateTimeKind.Local).AddTicks(4104)
                         });
                 });
 
@@ -421,25 +369,6 @@ namespace GBCSporting2021.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("Technician");
-                });
-
-            modelBuilder.Entity("GBCSporting2021.Models.Registration", b =>
-                {
-                    b.HasOne("GBCSporting2021.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GBCSporting2021.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
         }
