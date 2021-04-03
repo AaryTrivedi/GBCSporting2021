@@ -25,6 +25,9 @@ namespace GBCSporting2021
                 options.AppendTrailingSlash = true;
             });
 
+            services.AddMemoryCache();
+            services.AddSession();
+
             services.AddControllersWithViews();
 
             services.AddDbContext<Context>(options => 
@@ -51,6 +54,8 @@ namespace GBCSporting2021
             app.UseRouting();
             
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

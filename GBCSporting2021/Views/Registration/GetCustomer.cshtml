@@ -1,0 +1,32 @@
+﻿@model GBCSporting2021.ViewModels.RegistrationCustomerViewModel
+@{
+    ViewData["Title"] = "All Registration";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="flex align-items-center">
+    <h3 class="page-heading">Select Customer</h3>
+    &nbsp;
+    @if (TempData.Keys.Contains("message"))
+    {
+        <a href="#" class="badge badge-@(TempData["indicator"])">@TempData["message"]</a>
+    }
+</div>
+
+<form
+    method="post"
+    asp-action="GetCustomer"
+    asp-controller="Registration">
+    <div class="input-group">
+        <select asp-for="Id" class="form-control">
+            <option value="-1">Select Customer</option>
+            @foreach (Customer customer in Model.Customers)
+             {
+                <option value="@customer.CustomerId">
+                    @(customer.FirstName + " " + customer.LastName)
+                </option>
+             }
+        </select>
+    </div>
+    <button class="btn btn-primary">View</button>
+</form>
