@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using GBCSporting2021.Models;
 
 namespace GBCSporting2021.ViewModels
@@ -6,21 +7,21 @@ namespace GBCSporting2021.ViewModels
     public class IncidentFormViewModel
     {
 
-        private List<Customer> customers;
-        private List<Product> products;
-        private List<Technician> technicians;
+        private List<SelectListItem> customers;
+        private List<SelectListItem> products;
+        private List<SelectListItem> technicians;
         private Incident incident;
         private string action;
 
-        public List<Customer> Customers {
+        public List<SelectListItem> Customers {
             get => customers;
             set => customers = value;
         }
-        public List<Product> Products {
+        public List<SelectListItem> Products {
             get => products;
             set => products = value;
         }
-        public List<Technician> Technicians {
+        public List<SelectListItem> Technicians {
             get => technicians;
             set => technicians = value;
         }

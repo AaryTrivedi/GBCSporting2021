@@ -12,25 +12,15 @@
 <form method="post" asp-controller="Incident" asp-action=@Model.Action>
     <div class="form-group">
         <label asp-for="Incident.CustomerId">Customer</label>
-        <select class="form-control" asp-for="Incident.CustomerId">
+        <select class="form-control" asp-for="Incident.CustomerId" asp-items="Model.Customers">
             <option value="-1">Select Customer</option>
-            @foreach (Customer customer in Model.Customers)
-            {
-                <option value=@customer.CustomerId>
-                    @( customer.FirstName + " " + customer.LastName )
-                </option>
-            }
         </select>
         <span class="text-danger" asp-validation-for="Incident.CustomerId"></span>
     </div>
     <div class="form-group">
         <label asp-for="Incident.ProductId">Product</label>
-        <select class="form-control" asp-for="Incident.ProductId">
+        <select class="form-control" asp-for="Incident.ProductId" asp-items="Model.Products">
             <option value="-1">Select Product</option>
-            @foreach (Product product in Model.Products)
-            {
-                <option value=@product.ProductId>@product.Name</option>
-            }
         </select>
         <span class="text-danger" asp-validation-for="Incident.ProductId"></span>
     </div>
@@ -46,12 +36,8 @@
     </div>
     <div class="form-group">
         <label asp-for="Incident.TechnicianId">Technician</label>
-        <select class="form-control" asp-for="Incident.TechnicianId">
+        <select class="form-control" asp-for="Incident.TechnicianId" asp-items="Model.Technicians">
             <option value="">Select Technician</option>
-            @foreach (Technician technician in Model.Technicians)
-            {
-                <option value=@technician.TechnicianId>@technician.Name</option>
-            }
         </select>
         <span class="text-danger" asp-validation-for="Incident.TechnicianId"></span>
     </div>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,9 +53,32 @@ namespace GBCSporting2021.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            List<Customer> customers = ctx.Customers.ToList();
-            List<Product> products = ctx.Products.ToList();
-            List<Technician> technicians = ctx.Technicians.ToList();
+            List<SelectListItem> customers = ctx.Customers.ToList().ConvertAll(c => {
+                return new SelectListItem()
+                {
+                    Text = c.FirstName + " " + c.LastName,
+                    Value = c.CustomerId.ToString(),
+                    Selected = false
+                };
+            });
+
+            List<SelectListItem> products = ctx.Products.ToList().ConvertAll(p => {
+                return new SelectListItem()
+                {
+                    Text = p.Name,
+                    Value = p.ProductId.ToString(),
+                    Selected = false
+                };
+            });
+
+            List<SelectListItem> technicians = ctx.Technicians.ToList().ConvertAll(t => {
+                return new SelectListItem()
+                {
+                    Text = t.Name,
+                    Value = t.TechnicianId.ToString(),
+                    Selected = false
+                };
+            });
 
             IncidentFormViewModel ifvm = new IncidentFormViewModel
             {
@@ -78,9 +102,32 @@ namespace GBCSporting2021.Controllers
                                    .FirstOrDefault(i => i.IncidentId == identifier);
 
             IncidentFormViewModel ifvm = new IncidentFormViewModel();
-            List<Customer> customers = ctx.Customers.ToList();
-            List<Product> products = ctx.Products.ToList();
-            List<Technician> technicians = ctx.Technicians.ToList();
+            List<SelectListItem> customers = ctx.Customers.ToList().ConvertAll(c => {
+                return new SelectListItem()
+                {
+                    Text = c.FirstName + " " + c.LastName,
+                    Value = c.CustomerId.ToString(),
+                    Selected = false
+                };
+            });
+
+            List<SelectListItem> products = ctx.Products.ToList().ConvertAll(p => {
+                return new SelectListItem()
+                {
+                    Text = p.Name,
+                    Value = p.ProductId.ToString(),
+                    Selected = false
+                };
+            });
+
+            List<SelectListItem> technicians = ctx.Technicians.ToList().ConvertAll(t => {
+                return new SelectListItem()
+                {
+                    Text = t.Name,
+                    Value = t.TechnicianId.ToString(),
+                    Selected = false
+                };
+            });
 
             ifvm.Customers = customers;
             ifvm.Products = products;
@@ -112,9 +159,32 @@ namespace GBCSporting2021.Controllers
                 return RedirectToAction("List", "Incident");
             }
 
-            List<Customer> customers = ctx.Customers.ToList();
-            List<Product> products = ctx.Products.ToList();
-            List<Technician> technicians = ctx.Technicians.ToList();
+            List<SelectListItem> customers = ctx.Customers.ToList().ConvertAll(c => {
+                return new SelectListItem()
+                {
+                    Text = c.FirstName + " " + c.LastName,
+                    Value = c.CustomerId.ToString(),
+                    Selected = false
+                };
+            });
+
+            List<SelectListItem> products = ctx.Products.ToList().ConvertAll(p => {
+                return new SelectListItem()
+                {
+                    Text = p.Name,
+                    Value = p.ProductId.ToString(),
+                    Selected = false
+                };
+            });
+
+            List<SelectListItem> technicians = ctx.Technicians.ToList().ConvertAll(t => {
+                return new SelectListItem()
+                {
+                    Text = t.Name,
+                    Value = t.TechnicianId.ToString(),
+                    Selected = false
+                };
+            });
 
             ifvm.Customers = customers;
             ifvm.Products = products;
@@ -137,9 +207,32 @@ namespace GBCSporting2021.Controllers
                 return RedirectToAction("List", "Incident");
             }
 
-            List<Customer> customers = ctx.Customers.ToList();
-            List<Product> products = ctx.Products.ToList();
-            List<Technician> technicians = ctx.Technicians.ToList();
+            List<SelectListItem> customers = ctx.Customers.ToList().ConvertAll(c => {
+                return new SelectListItem()
+                {
+                    Text = c.FirstName + " " + c.LastName,
+                    Value = c.CustomerId.ToString(),
+                    Selected = false
+                };
+            });
+
+            List<SelectListItem> products = ctx.Products.ToList().ConvertAll(p => {
+                return new SelectListItem()
+                {
+                    Text = p.Name,
+                    Value = p.ProductId.ToString(),
+                    Selected = false
+                };
+            });
+
+            List<SelectListItem> technicians = ctx.Technicians.ToList().ConvertAll(t => {
+                return new SelectListItem()
+                {
+                    Text = t.Name,
+                    Value = t.TechnicianId.ToString(),
+                    Selected = false
+                };
+            });
 
             ifvm.Customers = customers;
             ifvm.Products = products;
