@@ -1,0 +1,47 @@
+﻿@model GBCSporting2021.ViewModels.TechIncidentListViewModel
+@{
+    ViewData["Title"] = "Technician Incidents";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="flex flex-column">
+    <a asp-action="GetTechnician" asp-controller="TechIncident">Switch Technician</a>
+    <div>
+        <h3 class="page-heading">
+            Technician
+        </h3>
+        @Model.Technician.Name
+    </div>
+</div>
+
+@if (Model.Incidents.Any())
+{
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Date Opened</th>
+            <th></th>
+        </tr>
+        @foreach (Incident incident in Model.Incidents)
+        {
+            <tr>
+                <td>@incident.Title</td>
+                <td>@incident.Customer.FirstName @incident.Customer.LastName</td>
+                <td>@incident.Product.Name</td>
+                <td>@incident.DateOpened</td>
+                <td>
+                    <a asp-action="EditIncident" asp-controller="TechIncident" asp-route-identifier="@incident.IncidentId">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <hr />
+    <h3>No Open Incidents Found</h3>
+}

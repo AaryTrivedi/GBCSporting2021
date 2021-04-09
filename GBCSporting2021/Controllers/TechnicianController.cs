@@ -55,6 +55,7 @@ namespace GBCSporting2021.Controllers
         public IActionResult Incidents(int identifier)
         {
             Technician technician = ctx.Technicians.Find(identifier);
+
             List<Incident> techIncidents = ctx.Incidents
                                               .Include(i => i.Customer)
                                               .Include(i => i.Product)

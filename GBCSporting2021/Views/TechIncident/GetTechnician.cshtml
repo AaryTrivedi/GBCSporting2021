@@ -1,0 +1,23 @@
+﻿@model GBCSporting2021.ViewModels.TechIncidentGetViewModel
+
+@{
+    ViewData["Title"] = "Select Technician";
+}
+
+<div class="d-flex">
+    <h3 class="display-4">Select Technician</h3>
+    @if (TempData.Keys.Contains("message"))
+    {
+        <a href="#" class="badge badge-@(TempData["indicator"])">@TempData["message"]</a>
+    }
+</div>
+
+<form method="post" asp-action="RedirectToList" asp-controller="TechIncident">
+    <div class="input-group">
+        <select class="form-control" asp-for="TechnicianId" asp-items="Model.Technicians">
+            <option value="-1">Select Technician</option>
+        </select>
+    </div>
+    <input type="hidden" name="identifier" value="@Model.TechnicianId" />
+    <button class="btn btn-primary">Select</button>
+</form>
