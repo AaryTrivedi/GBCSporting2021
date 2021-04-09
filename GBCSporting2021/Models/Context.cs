@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GBCSporting2021.Models.DBConfiguration;
 
 namespace GBCSporting2021.Models
 {
@@ -22,7 +23,7 @@ namespace GBCSporting2021.Models
         public DbSet<Registration> Registrations { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Country>().HasData(
+            /*modelBuilder.Entity<Country>().HasData(
                 new Country
                 {
                     CountryId = 1,
@@ -224,7 +225,14 @@ namespace GBCSporting2021.Models
                     CustomerId = 2,
                     ProductId = 2
                 }
-            );
+            );*/
+
+            modelBuilder.ApplyConfiguration(new CountriesConfigurations());
+            modelBuilder.ApplyConfiguration(new CustomerConfigurations());
+            modelBuilder.ApplyConfiguration(new IncidentsConfigurations());
+            modelBuilder.ApplyConfiguration(new ProductsConfigurations());
+            modelBuilder.ApplyConfiguration(new TechniciansConfigurations());
+            modelBuilder.ApplyConfiguration(new RegistrationsConfigurations());
         }
 
     }

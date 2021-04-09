@@ -24,7 +24,9 @@ namespace GBCSporting2021.Models
         [Required(ErrorMessage = "Country is required")]
         public int CountryId { get; set; }
         public Country Country { get; set; }
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [RegularExpression("^\\([0-9]{3}\\)[0-9]{3}-[0-9]{4}$", ErrorMessage="Phone must be in format (999)999-9999")]
         public string Phone { get; set; }
     }
 }
